@@ -8,8 +8,15 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-euclid-circular-a);
+  --color-primary: #105b48;
+  --color-icon-active: #176D5826;
+  --color-nav-icon: #176D58;
+  --color-border: #E4E4E4;
+  --color-deep-gray: #3D3D3D;
+  --color-primary-dark: #0d4a3a;
+  --color-primary-light: #1a7a5f;
+  --color-accent: #4545FE;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,5 +29,5 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-euclid-circular-a), sans-serif;
 }
