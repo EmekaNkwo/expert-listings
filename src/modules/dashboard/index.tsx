@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Header } from "../header";
 import { Navigation } from "../navigation";
 import { Welcome } from "../welcome";
@@ -16,18 +16,18 @@ export const Dashboard: React.FC = () => {
   const [isBudgetModalOpen, setIsBudgetModalOpen] = useState(false);
   const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
 
-  const handleChatClick = () => {
+  const handleChatClick = useCallback(() => {
     // Handle chat button click
     console.log("Chat button clicked");
-  };
+  }, []);
 
-  const handleOpenBudgetModal = () => {
+  const handleOpenBudgetModal = useCallback(() => {
     setIsBudgetModalOpen(true);
-  };
+  }, []);
 
-  const handleOpenCalendarModal = () => {
+  const handleOpenCalendarModal = useCallback(() => {
     setIsCalendarModalOpen(true);
-  };
+  }, []);
 
   return (
     <div className="min-h-screen bg-white ">

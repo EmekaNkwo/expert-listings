@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 interface User {
   name: string;
@@ -30,28 +30,28 @@ export const useHeader = ({
     email: 'dylanfran96@gmail.com',
   });
 
-  const handleCalculatorClick = () => {
+  const handleCalculatorClick = useCallback(() => {
     onOpenBudgetModal?.();
-  };
+  }, [onOpenBudgetModal]);
 
-  const handleCalendarClick = () => {
+  const handleCalendarClick = useCallback(() => {
     onOpenCalendarModal?.();
-  };
+  }, [onOpenCalendarModal]);
 
-  const handleSearchClick = () => {
+  const handleSearchClick = useCallback(() => {
     // TODO: Implement search functionality
     console.log('Search clicked');
-  };
+  }, []);
 
-  const handleWalletClick = () => {
+  const handleWalletClick = useCallback(() => {
     // TODO: Implement wallet functionality
     console.log('Wallet clicked');
-  };
+  }, []);
 
-  const handleBuildingClick = () => {
+  const handleBuildingClick = useCallback(() => {
     // TODO: Implement building functionality
     console.log('Building clicked');
-  };
+  }, []);
 
   return {
     user,

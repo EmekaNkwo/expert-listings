@@ -1,11 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { SalesChart } from "./components/SalesChart";
 import { FinancialMetric } from "./components/FinancialMetric";
 import { TimeFilter } from "./components/TimeFilter";
 import { useSalesOverview } from "./hooks/useSalesOverview";
 import { Carousel } from "../shared/components/Carousel";
+
+const TIME_FILTER_OPTIONS: Array<"1 Week" | "1 Month" | "1 Year"> = [
+  "1 Week",
+  "1 Month",
+  "1 Year",
+];
+
+const TOTAL_CAROUSEL_ITEMS = 2; // Number of SalesChart items
 
 export const SalesOverview: React.FC = () => {
   const {
@@ -19,25 +27,25 @@ export const SalesOverview: React.FC = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const timeFilterOptions: Array<"1 Week" | "1 Month" | "1 Year"> = [
-    "1 Week",
-    "1 Month",
-    "1 Year",
-  ];
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prev) =>
+      prev + 1 >= TOTAL_CAROUSEL_ITEMS ? 0 : prev + 1
+    );
+  }, []);
 
-  const handleNext = () => {
-    setCurrentIndex((prev) => {
-      const totalItems = 2; // Number of SalesChart items
-      return prev + 1 >= totalItems ? 0 : prev + 1;
-    });
-  };
+  const handlePrevious = useCallback(() => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? TOTAL_CAROUSEL_ITEMS - 1 : prev - 1
+    );
+  }, []);
 
-  const handlePrevious = () => {
-    setCurrentIndex((prev) => {
-      const totalItems = 2; // Number of SalesChart items
-      return prev === 0 ? totalItems - 1 : prev - 1;
-    });
-  };
+  const carouselItems = useMemo(
+    () => [
+      <SalesChart key="chart" data={chartData} />,
+      <SalesChart key="chart2" data={chartData} />,
+    ],
+    [chartData]
+  );
 
   return (
     <div className="flex flex-col gap-4 sm:gap-6 border-2 border-border rounded-2xl bg-white p-4 sm:p-6">
@@ -52,7 +60,7 @@ export const SalesOverview: React.FC = () => {
         </div>
         <button
           onClick={handleViewTransactions}
-          className="w-full lg:w-fit lg:min-w-[20rem] cursor-pointer rounded-4xl bg-transparent px-4 py-3 sm:px-8 sm:py-8 text-xs sm:text-sm font-semibold text-deep-gray transition-colors 
+          className="w-full lg:w-fit lg:min-w-[20rem] cursor-pointer rounded-4xl bg-transparent px-4 py-3 sm:px-8 sm:py-8 text-sm sm:text-md font-semibold text-deep-gray transition-colors 
           border-2 border-border hover:bg-primary-light hover:text-white"
         >
           View Transactions
@@ -60,7 +68,7 @@ export const SalesOverview: React.FC = () => {
       </div>
       <div className="flex justify-center sm:justify-end">
         <TimeFilter
-          options={timeFilterOptions}
+          options={TIME_FILTER_OPTIONS}
           selectedOption={selectedTimeFilter}
           onSelect={handleTimeFilterChange}
         />
@@ -77,10 +85,7 @@ export const SalesOverview: React.FC = () => {
             showIndicators={false}
             className="h-full"
           >
-            {[
-              <SalesChart key="chart" data={chartData} />,
-              <SalesChart key="chart2" data={chartData} />,
-            ]}
+            {carouselItems}
           </Carousel>
         </div>
         <div className="lg:col-span-1">

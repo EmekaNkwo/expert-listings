@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { ChartDataPoint } from '../components/SalesChart';
 import { TimeFilterOption } from '../components/TimeFilter';
 
@@ -89,15 +89,15 @@ export const useSalesOverview = (): UseSalesOverviewReturn => {
     return 'Current Period';
   }, [selectedTimeFilter]);
 
-  const handleTimeFilterChange = (filter: TimeFilterOption) => {
+  const handleTimeFilterChange = useCallback((filter: TimeFilterOption) => {
     setSelectedTimeFilter(filter);
     // TODO: Fetch new data based on filter
-  };
+  }, []);
 
-  const handleViewTransactions = () => {
+  const handleViewTransactions = useCallback(() => {
     // TODO: Navigate to transactions page or open modal
     console.log('View transactions clicked');
-  };
+  }, []);
 
   return {
     chartData,

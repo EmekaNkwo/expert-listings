@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Expert Listings Dashboard
 
-## Getting Started
+A modern, responsive dashboard application built with Next.js for managing and viewing property listings, sales data, and user information.
 
-First, run the development server:
+🌐 **Live Demo**: [https://expert-listings.vercel.app/](https://expert-listings.vercel.app/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Tech Stack
+
+- **Framework**: Next.js 16.1.1 (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4
+- **Charts**: Recharts
+- **Font**: Euclid Circular A (Local)
+
+## 📁 Project Structure
+
+```
+src/
+├── app/                    # Next.js app directory
+│   ├── layout.tsx         # Root layout with font configuration
+│   ├── page.tsx           # Home page
+│   └── globals.css        # Global styles
+└── modules/               # Feature modules
+    ├── dashboard/         # Main dashboard composition
+    ├── header/            # Header with navigation and user info
+    ├── navigation/        # Main navigation menu
+    ├── sales-overview/    # Sales charts and financial metrics
+    ├── property-listings/ # Property cards and carousel
+    ├── listings-overview/ # Listings summary
+    ├── users-overview/    # Users summary
+    ├── budget-modal/      # Budget setup modal
+    ├── calendar-modal/    # Calendar picker modal
+    ├── welcome/           # Welcome message
+    └── shared/            # Shared components and utilities
+        └── components/    # Reusable UI components
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🏗️ Architecture
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The project follows a **module-based architecture** with clear separation of concerns:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Modules**: Each feature is a self-contained module with its own components, hooks, and logic
+- **Components**: Presentational components focused on UI rendering
+- **Hooks**: Business logic and state management
+- **Shared**: Reusable components and utilities used across modules
 
-## Learn More
+## 🚦 Getting Started
 
-To learn more about Next.js, take a look at the following resources:
+### Prerequisites
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Node.js 18+
+- npm or yarn
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Installation
 
-## Deploy on Vercel
+```bash
+# Install dependencies
+npm install
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Development
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# Start development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Build
+
+```bash
+# Create production build
+npm run build
+
+# Start production server
+npm start
+```
+
+## 📝 Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm start` - Start production server
+- `npm run lint` - Run ESLint
+
+## 🎨 Styling
+
+The project uses Tailwind CSS with custom configuration:
+
+- Custom color variables for theming
+- Responsive breakpoints (sm, md, lg)
+- Custom font (Euclid Circular A) loaded locally
+
+## 📦 Dependencies
+
+- **next**: React framework
+- **react** & **react-dom**: UI library
+- **recharts**: Chart library
+- **tailwindcss**: Utility-first CSS framework
+
+## 📄 License
+
+Private project

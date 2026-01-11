@@ -1,3 +1,4 @@
+import { useCallback } from 'react';
 
 interface UsersMetrics {
   total: string;
@@ -18,10 +19,10 @@ const mockMetrics: UsersMetrics = {
 };
 
 export const useUsersOverview = (): UseUsersOverviewReturn => {
-  const handleViewAll = () => {
+  const handleViewAll = useCallback(() => {
     // TODO: Navigate to users page
     console.log('View all users clicked');
-  };
+  }, []);
 
   return {
     metrics: mockMetrics,

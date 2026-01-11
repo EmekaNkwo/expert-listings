@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useCallback, useMemo } from "react";
 import { CalendarHeader } from "./CalendarHeader";
 import { CalendarGrid } from "./CalendarGrid";
 import { Icon } from "../../shared/components/Icon";
@@ -17,25 +17,30 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({
   const [currentDate, setCurrentDate] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState<Date | null>(new Date());
 
-  const handlePreviousMonth = () => {
+  const handlePreviousMonth = useCallback(() => {
     setCurrentDate(
-      new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, 1)
+      (prev) => new Date(prev.getFullYear(), prev.getMonth() - 1, 1)
     );
-  };
+  }, []);
 
-  const handleNextMonth = () => {
+  const handleNextMonth = useCallback(() => {
     setCurrentDate(
-      new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 1)
+      (prev) => new Date(prev.getFullYear(), prev.getMonth() + 1, 1)
     );
-  };
+  }, []);
 
-  const handleDateSelect = (date: Date) => {
+  const handleDateSelect = useCallback((date: Date) => {
     setSelectedDate(date);
-  };
+  }, []);
 
-  const formatMonthYear = (date: Date): string => {
-    return date.toLocaleDateString("en-US", { month: "long", year: "numeric" });
-  };
+  const formattedMonthYear = useMemo(
+    () =>
+      currentDate.toLocaleDateString("en-US", {
+        month: "long",
+        year: "numeric",
+      }),
+    [currentDate]
+  );
 
   if (!isOpen) return null;
 
@@ -71,7 +76,7 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({
             </Icon>
           </button>
           <h3 className="text-lg font-semibold text-white">
-            {formatMonthYear(currentDate)}
+            {formattedMonthYear}
           </h3>
           <button
             onClick={handleNextMonth}

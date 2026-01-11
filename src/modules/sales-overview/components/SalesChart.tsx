@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useMemo, useCallback } from "react";
 import {
   BarChart,
   Bar,
@@ -36,44 +36,51 @@ interface TooltipPayload {
   payload: ChartData;
 }
 
-export const SalesChart: React.FC<SalesChartProps> = ({ data }) => {
-  const chartData = data.map((point) => ({
-    month: point.month,
-    "Series 1": point.value1,
-    "Series 2": point.value2,
-    "Series 3": point.value3,
-  }));
+export const SalesChart: React.FC<SalesChartProps> = React.memo(({ data }) => {
+  const chartData = useMemo(
+    () =>
+      data.map((point) => ({
+        month: point.month,
+        "Series 1": point.value1,
+        "Series 2": point.value2,
+        "Series 3": point.value3,
+      })),
+    [data]
+  );
 
-  const formatYAxis = (value: number) => {
+  const formatYAxis = useCallback((value: number) => {
     return `${value}m`;
-  };
+  }, []);
 
-  const customTooltip = (props: {
-    active?: boolean;
-    payload?: readonly TooltipPayload[];
-    label?: string | number;
-  }): React.ReactElement | null => {
-    const { active, payload } = props;
-    if (active && payload && payload.length) {
-      return (
-        <div className="rounded-lg border border-gray-200 bg-white p-3 shadow-lg">
-          <p className="mb-2 text-sm font-semibold text-gray-900">
-            {payload[0].payload.month}
-          </p>
-          {payload.map((entry, index) => (
-            <p
-              key={index}
-              className="text-sm text-gray-600"
-              style={{ color: entry.color }}
-            >
-              {entry.name}: {entry.value}m
+  const customTooltip = useCallback(
+    (props: {
+      active?: boolean;
+      payload?: readonly TooltipPayload[];
+      label?: string | number;
+    }): React.ReactElement | null => {
+      const { active, payload } = props;
+      if (active && payload && payload.length) {
+        return (
+          <div className="rounded-lg border border-gray-200 bg-white p-3 shadow-lg">
+            <p className="mb-2 text-sm font-semibold text-gray-900">
+              {payload[0].payload.month}
             </p>
-          ))}
-        </div>
-      );
-    }
-    return null;
-  };
+            {payload.map((entry, index) => (
+              <p
+                key={index}
+                className="text-sm text-gray-600"
+                style={{ color: entry.color }}
+              >
+                {entry.name}: {entry.value}m
+              </p>
+            ))}
+          </div>
+        );
+      }
+      return null;
+    },
+    []
+  );
 
   return (
     <div className=" p-6">
@@ -127,4 +134,6 @@ export const SalesChart: React.FC<SalesChartProps> = ({ data }) => {
       </ResponsiveContainer>
     </div>
   );
-};
+});
+
+SalesChart.displayName = "SalesChart";

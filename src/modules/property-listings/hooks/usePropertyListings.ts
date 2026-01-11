@@ -1,5 +1,5 @@
 import { Property } from '../components/PropertyCarousel';
-import { CarouselImgTwo, CarouselImgThree } from '../../../../public/images/index';
+import { CarouselImgTwo, CarouselImgThree, CarouselImgOne } from '../../../../public/images/index';
 
 interface UsePropertyListingsReturn {
   properties: Property[];
@@ -11,9 +11,9 @@ const mockProperties: Property[] = [
     title: 'Urban Prime Plaza Premiere',
     badge: 'MOST CLICKED',
     images: [
-      CarouselImgTwo.src,
-      CarouselImgThree.src as string,
-      CarouselImgTwo.src as string,
+      CarouselImgOne.src as string,
+      CarouselImgOne.src as string,
+      CarouselImgOne.src as string,
     ],
   },
   {
