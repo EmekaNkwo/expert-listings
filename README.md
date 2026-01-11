@@ -84,14 +84,6 @@ npm start
 - `npm start` - Start production server
 - `npm run lint` - Run ESLint
 
-## 🎨 Styling
-
-The project uses Tailwind CSS with custom configuration:
-
-- Custom color variables for theming
-- Responsive breakpoints (sm, md, lg)
-- Custom font (Euclid Circular A) loaded locally
-
 ## 📦 Dependencies
 
 - **next**: React framework
