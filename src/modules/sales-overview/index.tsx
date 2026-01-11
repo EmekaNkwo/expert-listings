@@ -46,7 +46,9 @@ export const SalesOverview: React.FC = () => {
           <h2 className="text-xl sm:text-2xl font-semibold text-gray-900">
             Sales Overview
           </h2>
-          <p className="text-xs sm:text-sm text-gray-600">Showing overview {period}</p>
+          <p className="text-xs sm:text-sm text-gray-600">
+            Showing overview {period}
+          </p>
         </div>
         <button
           onClick={handleViewTransactions}

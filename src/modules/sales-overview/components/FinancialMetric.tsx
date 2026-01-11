@@ -29,23 +29,23 @@ export const FinancialMetric: React.FC<FinancialMetricProps> = ({
     }
   };
   return (
-    <div className="h-full rounded-lg border-2 border-gray-200 bg-white p-4 flex flex-col gap-2 justify-around">
+    <div className="h-full rounded-lg border-2 border-gray-200 bg-white p-3 sm:p-4 flex flex-col gap-2 justify-around">
       <p
-        className="mt-2 text-2xl font-semibold"
+        className="mt-2 text-xl sm:text-2xl font-semibold"
         style={{ color: getLabelColor(label) }}
       >
         {value}
       </p>
-      <div className="flex items-center gap-3">
-        <p className="text-md text-gray-600">{label}</p>
-        <div className=" flex items-center gap-1">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+        <p className="text-sm sm:text-md text-gray-600">{label}</p>
+        <div className="flex items-center gap-1">
           <ArrowIcon
             direction={isPositive ? "up" : "down"}
             size={16}
             fill={isPositive ? "#12B76A" : "#F04438"}
           />
           <span
-            className={`text-sm font-medium ${
+            className={`text-xs sm:text-sm font-medium ${
               isPositive ? "text-green-600" : "text-red-600"
             }`}
           >

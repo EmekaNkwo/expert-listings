@@ -16,14 +16,14 @@ export const NavItem: React.FC<NavItemProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`flex items-center gap-2 rounded-lg px-4 py-2  font-medium text-md transition-colors ${
+      className={`flex items-center gap-1.5 sm:gap-2 rounded-lg px-2 sm:px-4 py-1.5 sm:py-2 font-medium text-sm sm:text-md transition-colors whitespace-nowrap ${
         isActive
           ? "bg-icon-active text-nav-icon"
           : "text-deep-gray hover:bg-gray-100"
       }`}
     >
-      <span className="flex-shrink-0 ">{icon}</span>
-      <span>{label}</span>
+      <span className="flex-shrink-0">{icon}</span>
+      <span className="hidden sm:inline">{label}</span>
     </button>
   );
 };

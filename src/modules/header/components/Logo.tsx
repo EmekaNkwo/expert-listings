@@ -12,7 +12,7 @@ export const Logo: React.FC<LogoProps> = () => {
       src={LogoIcon}
       alt="Expert Listing Logo"
       height={32}
-      className="h-8 w-auto"
+      className="h-6 sm:h-8 w-auto"
     />
   );
 };

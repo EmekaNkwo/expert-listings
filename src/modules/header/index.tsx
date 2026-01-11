@@ -27,9 +27,9 @@ export const Header: React.FC<HeaderProps> = ({
   } = useHeader({ onOpenBudgetModal, onOpenCalendarModal });
 
   return (
-    <header className="relative z-30 flex h-20 items-center justify-between bg-primary px-6">
+    <header className="relative z-30 flex h-16 sm:h-20 items-center justify-between bg-primary px-4 sm:px-6">
       <Logo />
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4">
         <HeaderActions
           onCalculatorClick={handleCalculatorClick}
           onCalendarClick={handleCalendarClick}
