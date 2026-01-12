@@ -2,6 +2,7 @@
 
 import React from "react";
 import { UserAvatar } from "./UserAvatar";
+import { Icon } from "../../shared/components/Icon";
 import {
   CalculatorIcon,
   CalendarIcon,
@@ -57,19 +58,9 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({
               className="text-white hover:text-gray-200 transition-colors"
               aria-label="Close menu"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
+              <Icon size={24} stroke="currentColor">
+                <path d="M6 18L18 6M6 6l12 12" />
+              </Icon>
             </button>
           </div>
 
@@ -80,9 +71,7 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({
               email={user.email}
             />
             <div className="mt-3">
-              <p className="text-sm font-semibold text-gray-900">
-                {user.name}
-              </p>
+              <p className="text-sm font-semibold text-gray-900">{user.name}</p>
               <p className="text-xs text-gray-600">{user.email}</p>
             </div>
           </div>
@@ -122,7 +111,7 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({
               >
                 <SearchIcon size={24} stroke="#52525B" />
                 <span className="text-sm font-medium text-gray-900">
-                  Search Activity
+                  Search Status
                 </span>
               </button>
               <button
@@ -133,7 +122,9 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({
                 className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors text-left"
               >
                 <WalletIcon size={24} stroke="#52525B" />
-                <span className="text-sm font-medium text-gray-900">Wallet</span>
+                <span className="text-sm font-medium text-gray-900">
+                  Wallet
+                </span>
               </button>
               <button
                 onClick={() => {
@@ -143,9 +134,7 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({
                 className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 transition-colors text-left"
               >
                 <ShoppingBagIcon size={24} stroke="#52525B" />
-                <span className="text-sm font-medium text-gray-900">
-                  Building
-                </span>
+                <span className="text-sm font-medium text-gray-900">Shop</span>
               </button>
             </div>
           </div>
@@ -154,4 +143,3 @@ export const MobileSidebar: React.FC<MobileSidebarProps> = ({
     </>
   );
 };
-
