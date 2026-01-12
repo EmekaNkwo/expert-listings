@@ -25,16 +25,16 @@ export const BudgetModal: React.FC<BudgetModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 sm:p-0"
       onClick={onClose}
     >
       <div
-        className="bg-white rounded-lg shadow-2xl w-full max-w-xl mx-4 max-h-[90vh] overflow-y-auto"
+        className="bg-white rounded-lg shadow-2xl w-full max-w-[95%] sm:max-w-xl mx-auto max-h-[95vh] sm:max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <BudgetModalHeader icon={<CalculatorIcon size={104} />} />
 
-        <div className="px-6 py-6 space-y-6">
+        <div className="px-4 sm:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
           <BudgetFeature
             icon={<SettingIcon size={24} />}
             title="Set up annual budgets by account category"
@@ -52,10 +52,10 @@ export const BudgetModal: React.FC<BudgetModalProps> = ({
           />
         </div>
 
-        <div className="px-6 py-4 border-t border-gray-200">
+        <div className="px-4 sm:px-6 py-3 sm:py-4 border-t border-gray-200">
           <button
             onClick={onCreateBudget}
-            className="w-full bg-gray-900 text-white font-semibold py-3 px-6 rounded-lg hover:bg-gray-800 transition-colors"
+            className="w-full bg-gray-900 text-white font-semibold py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg hover:bg-gray-800 transition-colors text-sm sm:text-base"
           >
             Create Budget
           </button>

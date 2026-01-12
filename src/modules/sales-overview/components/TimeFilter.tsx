@@ -17,7 +17,6 @@ export const TimeFilter: React.FC<TimeFilterProps> = ({
       {options.map((option) => (
         <button
           key={option}
-          // onClick={() => onSelect(option)}
           className={`rounded-lg px-4 py-2 text-sm text-deep-gray font-semibold transition-colors ${
             selectedOption === option ? "bg-gray-100" : " hover:bg-grey-100"
           } `}

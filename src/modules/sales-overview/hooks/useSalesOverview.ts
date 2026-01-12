@@ -18,8 +18,6 @@ interface UseSalesOverviewReturn {
   handleViewTransactions: () => void;
 }
 
-// Mock data - can be replaced with API calls later
-// Values are in millions (m) to match the Y-axis scale (0-50m)
 const mockChartData: Record<TimeFilterOption, ChartDataPoint[]> = {
   '1 Week': [
     { month: 'Mon', value1: 30, value2: 25, value3: 9 },
@@ -85,17 +83,14 @@ export const useSalesOverview = (): UseSalesOverviewReturn => {
     if (selectedTimeFilter === '1 Year') {
       return 'Jan 2022 - Sep 2022';
     }
-    // Add logic for other periods
     return 'Current Period';
   }, [selectedTimeFilter]);
 
   const handleTimeFilterChange = useCallback((filter: TimeFilterOption) => {
     setSelectedTimeFilter(filter);
-    // TODO: Fetch new data based on filter
   }, []);
 
   const handleViewTransactions = useCallback(() => {
-    // TODO: Navigate to transactions page or open modal
     console.log('View transactions clicked');
   }, []);
 

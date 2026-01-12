@@ -13,6 +13,9 @@ interface UseHeaderProps {
 
 interface UseHeaderReturn {
   user: User;
+  isSidebarOpen: boolean;
+  toggleSidebar: () => void;
+  closeSidebar: () => void;
   handleCalculatorClick: () => void;
   handleCalendarClick: () => void;
   handleSearchClick: () => void;
@@ -30,6 +33,16 @@ export const useHeader = ({
     email: 'dylanfran96@gmail.com',
   });
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = useCallback(() => {
+    setIsSidebarOpen((prev) => !prev);
+  }, []);
+
+  const closeSidebar = useCallback(() => {
+    setIsSidebarOpen(false);
+  }, []);
+
   const handleCalculatorClick = useCallback(() => {
     onOpenBudgetModal?.();
   }, [onOpenBudgetModal]);
@@ -39,22 +52,22 @@ export const useHeader = ({
   }, [onOpenCalendarModal]);
 
   const handleSearchClick = useCallback(() => {
-    // TODO: Implement search functionality
     console.log('Search clicked');
   }, []);
 
   const handleWalletClick = useCallback(() => {
-    // TODO: Implement wallet functionality
     console.log('Wallet clicked');
   }, []);
 
   const handleBuildingClick = useCallback(() => {
-    // TODO: Implement building functionality
     console.log('Building clicked');
   }, []);
 
   return {
     user,
+    isSidebarOpen,
+    toggleSidebar,
+    closeSidebar,
     handleCalculatorClick,
     handleCalendarClick,
     handleSearchClick,

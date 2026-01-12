@@ -43,5 +43,4 @@ export const BudgetModalModule: React.FC<BudgetModalModuleProps> = ({
   );
 };
 
-// Export hook for external use
 export { useBudgetModal };

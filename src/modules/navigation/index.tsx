@@ -61,7 +61,6 @@ export const Navigation: React.FC = () => {
               label={item.label}
               icon={item.icon}
               isActive={activeItem === item.id}
-              // onClick={() => setActiveItem(item.id)}
             />
           ))}
         </div>

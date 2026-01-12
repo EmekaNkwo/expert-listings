@@ -19,7 +19,6 @@ export const useBudgetModal = (): UseBudgetModalReturn => {
   };
 
   const handleCreateBudget = () => {
-    // TODO: Implement budget creation logic
     console.log("Create budget clicked");
     closeModal();
   };

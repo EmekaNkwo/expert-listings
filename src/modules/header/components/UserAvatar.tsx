@@ -30,7 +30,6 @@ export const UserAvatar: React.FC<UserAvatarProps> = ({
         {initial}
       </div>
 
-      {/* Hover Popover */}
       {isHovered && <UserInfoPopover name={name} email={email} />}
     </div>
   );

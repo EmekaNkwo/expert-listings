@@ -46,50 +46,46 @@ export const CalendarModal: React.FC<CalendarModalProps> = ({
 
   return (
     <>
-      {/* Backdrop - covers entire screen including header with higher z-index */}
       <div
         className="fixed top-0 left-0 right-0 bottom-0 bg-black/50 z-40 transition-opacity"
         onClick={onClose}
       />
 
-      {/* Calendar Modal - slides in from right, below header */}
       <div
         className={`
-          fixed right-0 top-20 h-[calc(100vh-5rem)] w-full max-w-md bg-black z-50
+          fixed right-0 top-16 sm:top-20 h-[calc(100vh-4rem)] sm:h-[calc(100vh-5rem)] w-full sm:max-w-md bg-black z-50
           transform transition-transform duration-300 ease-in-out
           ${isOpen ? "translate-x-0" : "translate-x-full"}
-          shadow-2xl
+          shadow-2xl overflow-y-auto
         `}
         onClick={(e) => e.stopPropagation()}
       >
         <CalendarHeader onClose={onClose} />
 
-        {/* Month Navigation */}
-        <div className="flex items-center justify-between px-8 py-5 border-b border-gray-700">
+        <div className="flex items-center justify-between px-4 sm:px-8 py-3 sm:py-5 border-b border-gray-700">
           <button
             onClick={handlePreviousMonth}
-            className="text-white hover:text-gray-300 transition-colors"
+            className="text-white hover:text-gray-300 transition-colors p-2 -ml-2 sm:ml-0"
             aria-label="Previous month"
           >
-            <Icon size={20} stroke="currentColor">
+            <Icon size={18} className="sm:w-5 sm:h-5" stroke="currentColor">
               <path d="M15 18l-6-6 6-6" />
             </Icon>
           </button>
-          <h3 className="text-lg font-semibold text-white">
+          <h3 className="text-base sm:text-lg font-semibold text-white text-center">
             {formattedMonthYear}
           </h3>
           <button
             onClick={handleNextMonth}
-            className="text-white hover:text-gray-300 transition-colors"
+            className="text-white hover:text-gray-300 transition-colors p-2 -mr-2 sm:mr-0"
             aria-label="Next month"
           >
-            <Icon size={20} stroke="currentColor">
+            <Icon size={18} className="sm:w-5 sm:h-5" stroke="currentColor">
               <path d="M9 18l6-6-6-6" />
             </Icon>
           </button>
         </div>
 
-        {/* Calendar Grid */}
         <CalendarGrid
           currentDate={currentDate}
           selectedDate={selectedDate}

@@ -39,10 +39,9 @@ export const Carousel: React.FC<CarouselProps> = React.memo(
 
     return (
       <div className={`relative ${className}`}>
-        {/* Carousel Container */}
-        <div className="relative overflow-hidden rounded-lg">
+        <div className="relative overflow-hidden rounded-lg touch-pan-x">
           <div
-            className="flex transition-transform duration-500 ease-in-out"
+            className="flex transition-transform duration-500 ease-in-out will-change-transform"
             style={{
               transform: `translateX(-${translateX}%)`,
             }}
@@ -50,7 +49,7 @@ export const Carousel: React.FC<CarouselProps> = React.memo(
             {React.Children.map(children, (child, index) => (
               <div
                 key={index}
-                className="flex-shrink-0"
+                className="shrink-0"
                 style={{ width: `${100 / itemsPerView}%` }}
               >
                 <div className="h-full w-full">{child}</div>
@@ -59,16 +58,15 @@ export const Carousel: React.FC<CarouselProps> = React.memo(
           </div>
         </div>
 
-        {/* Navigation Arrows */}
         {showArrows && totalPages > 1 && (
           <>
             <button
               onClick={onPrevious}
-              className="absolute left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-200 p-2 transition-all hover:bg-gray-300"
+              className="absolute left-1 sm:left-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-200 sm:bg-gray-200 p-1.5 sm:p-2 transition-all hover:bg-gray-300 active:bg-gray-400 touch-manipulation"
               aria-label="Previous"
             >
               <svg
-                className="h-5 w-5 text-gray-600"
+                className="h-4 w-4 sm:h-5 sm:w-5 text-gray-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -83,11 +81,11 @@ export const Carousel: React.FC<CarouselProps> = React.memo(
             </button>
             <button
               onClick={onNext}
-              className="absolute right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-200 p-2 transition-all hover:bg-gray-300"
+              className="absolute right-1 sm:right-2 top-1/2 z-10 -translate-y-1/2 rounded-full bg-gray-200 sm:bg-gray-200 p-1.5 sm:p-2 transition-all hover:bg-gray-300 active:bg-gray-400 touch-manipulation"
               aria-label="Next"
             >
               <svg
-                className="h-5 w-5 text-gray-600"
+                className="h-4 w-4 sm:h-5 sm:w-5 text-gray-600"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -103,19 +101,18 @@ export const Carousel: React.FC<CarouselProps> = React.memo(
           </>
         )}
 
-        {/* Indicator Dots */}
         {showIndicators && totalPages > 1 && (
-          <div className="mt-4 flex items-center justify-center gap-2">
+          <div className="mt-3 sm:mt-4 flex items-center justify-center gap-1.5 sm:gap-2">
             {Array.from({ length: totalPages }).map((_, index) => {
               const currentPage = Math.floor(currentIndex / itemsPerView);
               return (
                 <button
                   key={index}
                   onClick={() => onIndicatorClick?.(index * itemsPerView)}
-                  className={`h-2 rounded-full transition-all ${
+                  className={`h-1.5 sm:h-2 rounded-full transition-all touch-manipulation ${
                     currentPage === index
-                      ? "w-8 bg-gray-900"
-                      : "w-2 bg-gray-300 hover:bg-gray-400"
+                      ? "w-6 sm:w-8 bg-gray-900"
+                      : "w-1.5 sm:w-2 bg-gray-300 hover:bg-gray-400 active:bg-gray-500"
                   }`}
                   aria-label={`Go to page ${index + 1}`}
                 />

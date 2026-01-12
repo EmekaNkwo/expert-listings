@@ -11,7 +11,6 @@ interface UseListingsOverviewReturn {
   handleViewAll: () => void;
 }
 
-// Mock data - can be replaced with API call later
 const mockMetrics: ListingsMetrics = {
   total: '1.8k',
   active: '80',
@@ -20,7 +19,6 @@ const mockMetrics: ListingsMetrics = {
 
 export const useListingsOverview = (): UseListingsOverviewReturn => {
   const handleViewAll = useCallback(() => {
-    // TODO: Navigate to listings page
     console.log('View all listings clicked');
   }, []);
 

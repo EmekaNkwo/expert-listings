@@ -28,5 +28,4 @@ export const CalendarModalModule: React.FC<CalendarModalModuleProps> = ({
   return <CalendarModal isOpen={isOpen} onClose={handleClose} />;
 };
 
-// Export hook for external use
 export { useCalendarModal };

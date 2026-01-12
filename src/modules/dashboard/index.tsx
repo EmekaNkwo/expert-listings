@@ -17,7 +17,6 @@ export const Dashboard: React.FC = () => {
   const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
 
   const handleChatClick = useCallback(() => {
-    // Handle chat button click
     console.log("Chat button clicked");
   }, []);
 
